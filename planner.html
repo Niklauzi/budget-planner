@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Planner</title>
+    <!-- Link Font Awesome Calculator icon as favicon -->
+    <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/svgs/solid/calculator.svg">
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="planner.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1><i class="fas fa-chart-pie me-3"></i>Financial Planning App</h1>
+                    <p class="lead">Smart budgeting made simple - Plan your finances with precision</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Navigation Tabs -->
+        <ul class="nav nav-pills justify-content-center mb-4" id="plannerTabs">
+            <li class="nav-item">
+                <button class="nav-link active" id="monthly-tab" data-bs-toggle="pill" data-bs-target="#monthly">
+                    <i class="fas fa-calendar-alt me-2"></i>Monthly Planner
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link" id="weekly-tab" data-bs-toggle="pill" data-bs-target="#weekly">
+                    <i class="fas fa-calendar-week me-2"></i>Weekly Planner
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Monthly Planner -->
+            <div class="tab-pane fade show active" id="monthly">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card planner-card">
+                            <div class="card-header">
+                                <i class="fas fa-calculator me-2"></i>Monthly Budget Calculator
+                            </div>
+                            <div class="card-body">
+                                <form id="monthlyForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">Monthly Income</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">₦</span>
+                                            <input type="number" class="form-control" id="monthlyIncome" placeholder="Enter your monthly income" min="0" step="0.01">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Budget Allocation</h5>
+                                        <div class="row">
+                                            <div class="col-6 mb-2">
+                                                <label class="form-label small">Savings %</label>
+                                                <input type="number" class="form-control form-control-sm" id="monthlySavingsPercent" value="50" min="0" max="100">
+                                            </div>
+                                            <div class="col-6 mb-2">
+                                                <label class="form-label small">Needs %</label>
+                                                <input type="number" class="form-control form-control-sm" id="monthlyNeedsPercent" value="15" min="0" max="100">
+                                            </div>
+                                            <div class="col-6 mb-2">
+                                                <label class="form-label small">Wants %</label>
+                                                <input type="number" class="form-control form-control-sm" id="monthlyWantsPercent" value="10" min="0" max="100">
+                                            </div>
+                                            <div class="col-6 mb-2">
+                                                <label class="form-label small">Food %</label>
+                                                <input type="number" class="form-control form-control-sm" id="monthlyFoodPercent" value="20" min="0" max="100">
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <label class="form-label small">Tax %</label>
+                                                <input type="number" class="form-control form-control-sm" id="monthlyTaxPercent" value="5" min="0" max="100">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-calculate w-100" onclick="calculateMonthly()">
+                                        <i class="fas fa-magic me-2"></i>Calculate Budget
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div id="monthlyResults" class="results-section" style="display: none;">
+                            <h4 class="mb-3"><i class="fas fa-chart-bar me-2"></i>Your Monthly Budget Breakdown</h4>
+                            <div class="row" id="monthlyCategories"></div>
+                            <div class="summary-card">
+                                <h5><i class="fas fa-info-circle me-2"></i>Budget Summary</h5>
+                                <p class="mb-0" id="monthlySummary"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Planner -->
+            <div class="tab-pane fade" id="weekly">
+                <div class="row">
+                    <div class="col-lg-4 mb-4">
+                        <div class="card planner-card">
+                            <div class="card-header">
+                                <i class="fas fa-calculator me-2"></i>Weekly Budget Calculator
+                            </div>
+                            <div class="card-body">
+                                <form id="weeklyForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">Weekly Income</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">₦</span>
+                                            <input type="number" class="form-control" id="weeklyIncome" placeholder="Enter your weekly income" min="0" step="0.01">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <h5 class="form-label">Budget Allocation</h5>
+                                        <div class="row">
+                                            <div class="col-6 mb-2">
+                                                <label class="form-label small">Savings %</label>
+                                                <input type="number" class="form-control form-control-sm" id="weeklySavingsPercent" value="50" min="0" max="100">
+                                                
+                                            </div>
+                                            <div class="col-6 mb-2">
+                                                <label class="form-label small">Needs %</label>
+                                                <input type="number" class="form-control form-control-sm" id="weeklyNeedsPercent" value="15" min="0" max="100">
+                                            </div>
+                                            <div class="col-6 mb-2">
+                                                <label class="form-label small">Wants %</label>
+                                                <input type="number" class="form-control form-control-sm" id="weeklyWantsPercent" value="10" min="0" max="100">
+                                            </div>
+                                            <div class="col-6 mb-2">
+                                                <label class="form-label small">Food %</label>
+                                                <input type="number" class="form-control form-control-sm" id="weeklyFoodPercent" value="20" min="0" max="100">
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <label class="form-label small">Tax %</label>
+                                                <input type="number" class="form-control form-control-sm" id="weeklyTaxPercent" value="5" min="0" max="100">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-calculate w-100" onclick="calculateWeekly()">
+                                        <i class="fas fa-magic me-2"></i>Calculate Budget
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div id="weeklyResults" class="results-section" style="display: none;">
+                            <h4 class="mb-3"><i class="fas fa-chart-bar me-2"></i>Your Weekly Budget Breakdown</h4>
+                            <div class="row" id="weeklyCategories"></div>
+                            <div class="summary-card">
+                                <h5><i class="fas fa-info-circle me-2"></i>Budget Summary</h5>
+                                <p class="mb-0" id="weeklySummary"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+   <script src="planner.js"></script>
+</body>
+</html>

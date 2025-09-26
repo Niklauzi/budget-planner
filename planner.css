@@ -1,0 +1,164 @@
+:root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --warning-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --info-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --secondary-gradient: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .hero-section {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 2rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hero-section h1 {
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .planner-card {
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border: none;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .planner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .card-header {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 1.5rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .form-control, .form-select {
+            border-radius: 0.75rem;
+            border: 2px solid #e9ecef;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        .btn-calculate {
+            background: var(--success-gradient);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-calculate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            color: white;
+        }
+
+        .category-card {
+            border-radius: 1rem;
+            border: none;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .category-card:hover {
+            transform: scale(1.02);
+        }
+
+        .category-savings { background: var(--success-gradient); }
+        .category-needs { background: var(--info-gradient); }
+        .category-wants { background: var(--warning-gradient); }
+        .category-tax { background: linear-gradient(135deg, #E44D26 0%, #F16529 100%); }
+        .category-food { background: var(--dark-gradient); }
+
+        .category-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .category-percentage {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .icon-large {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .results-section {
+            margin-top: 2rem;
+        }
+
+        .nav-pills .nav-link {
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-pills .nav-link.active {
+            background: var(--primary-gradient);
+            border: none;
+        }
+
+        .tab-pane {
+            padding-top: 2rem;
+        }
+
+        .input-group-text {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            border-radius: 0.75rem 0 0 0.75rem;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 0;
+            }
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+        }
